@@ -1,5 +1,6 @@
 // Автор: Прасков Дмитрий ИВТ-25
 // Задача №11_D
+//TODO: Добавить try для модуля
 
 package ZabGU;
 
@@ -45,8 +46,19 @@ public class Calculation{ // модуль, который нахоидит вы�
 	// Возвращает значение a типа данных double
 	static double solve_a(double x, double y){
 	
+	if (!Double.isFinite(x)){
+		throw new IllegalArgumentException("Параметр x должен быть конечным числом " + x);
+	}
+	if (!Double.isFinite(y)){
+		throw new IllegalArgumentException("Параметр y должен быть конечным числом " + y);
+	}
+	
 	// Класс Math содержит набор базовых математических операций, константы (например число Пи)
 	double a = 2 * Math.cos(x - Math.PI / 6) / (0.5 + Math.pow(Math.sin(y), 2));	
+ 
+ 	if (!Double.isFinite(a)){
+		throw new ArithmeticException("Результат a должен быть конечным числом " + a);
+	}
  
 	return a;
 	}
@@ -56,8 +68,16 @@ public class Calculation{ // модуль, который нахоидит вы�
 	// Возвращает значение b типа данных double
 	static double solve_b(double z){
 		
-	double b = 1 + (Math.pow(z, 2)) / (3 + Math.pow(z, 2) / 5);	
+	if (!Double.isFinite(z)){
+		throw new IllegalArgumentException("Параметр z должен быть конечным числом " + z);
+	}
 		
+	double b = 1 + (Math.pow(z, 2)) / (3 + Math.pow(z, 2) / 5);	
+	
+ 	if (!Double.isFinite(b)){
+		throw new ArithmeticException("Результат b должен быть конечным числом " + b);
+	}
+	
 	return b;
 	
 	}

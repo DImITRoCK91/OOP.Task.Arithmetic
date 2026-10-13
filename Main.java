@@ -10,13 +10,14 @@ public class Main { // Объявление класса, в Java всё нах�
 	
 	public static void main(String[] args){ // Главный метод, String[] args - массив строк, переданных при запуске программы 
 	
+	Calculation.check(); // запускаем проверки
+	
+	
 	//  проверка, был ли введены аргументы для вывода справки
 	if (args.length > 0 && (args[0].equals("help") || args[0].equals("--help"))){
 		printhelp();
 		return;
 	}
-	
-	Calculation.check(); // запускаем проверки
 	
 	// переменные, которые будут переданы в функции для вычислений
 	double x,y,z;
@@ -35,33 +36,32 @@ public class Main { // Объявление класса, в Java всё нах�
 			return;
 		}
 		
-		
 	}
 	
 	// Если аргументы не переданы, то запрашиваем данные через Scanner
 	else if (args.length == 0){
 	
-	Scanner in = new Scanner(System.in); // Создание объекта для ввода с клавиатуры
-	
-	// println - выводит значение и переводит курсор на новую строку
-	System.out.println("Введите значения x, y, z:");
-
-	
-	// Объект in, который мы создали в Scanner in, отвечает за чтение данных
-	// .nextDouble() - специальный метод класса Scanner, который заставляет программу остановиться, ждать, пока пользователь не введёт число и не нажмёт Enter
-	// затем преобразует ввод в тип double
-	try{
-	x = in.nextDouble();
-	y = in.nextDouble();
-	z = in.nextDouble();
-	} catch(InputMismatchException e){
-		System.out.println("Ошибка: введите числа");
-		// освобождаем ресурсы после использования
-		in.close();
-		return;
+		Scanner in = new Scanner(System.in); // Создание объекта для ввода с клавиатуры
 		
-	}
-	in.close();
+		// println - выводит значение и переводит курсор на новую строку
+		System.out.println("Введите значения x, y, z:");
+
+		
+		// Объект in, который мы создали в Scanner in, отвечает за чтение данных
+		// .nextDouble() - специальный метод класса Scanner, который заставляет программу остановиться, ждать, пока пользователь не введёт число и не нажмёт Enter
+		// затем преобразует ввод в тип double
+		try{
+		x = in.nextDouble();
+		y = in.nextDouble();
+		z = in.nextDouble();
+		} catch(InputMismatchException e){
+			System.out.println("Ошибка: введите числа");
+			// освобождаем ресурсы после использования
+			in.close();
+			return;
+			
+		}
+		in.close();
 	
 	}
 	// если передано 1 или 2 аргумента
